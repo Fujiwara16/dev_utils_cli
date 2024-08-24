@@ -7,7 +7,7 @@ setup(
     install_requires=open('requirements.txt').read().splitlines(),
     entry_points={
         'console_scripts': [
-            'xyz=cli:main',  # This creates the `xyz` command
+            'xyz=utils.cli',  # This creates the `xyz` command
         ],
     },
     author="Fujiwara",
@@ -23,4 +23,3 @@ setup(
     ],
     python_requires='>=3.6',
 )
-
