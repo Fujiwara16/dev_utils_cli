@@ -1,26 +1,31 @@
 import argparse
-from datetime import datetime
 
-
-def epoch_to_datetime(epoch):
-    try:
-        # Convert epoch to datetime
-        dt = datetime.fromtimestamp(int(epoch))
-        return dt.strftime('%Y-%m-%d %H:%M:%S')
-    except ValueError:
-        return "Invalid epoch value."
+from utils.epoch_utils import epoch_to_datetime
+from utils.jwt_decode import decode_jwt
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Convert epoch time to human-readable datetime.")
-    parser.add_argument("command", help="Command to run (epochToDatetime)")
-    parser.add_argument("epoch", help="Epoch time to convert")
+    parser = argparse.ArgumentParser(description="A CLI tool for common developer utils")
+    subparsers = parser.add_subparsers(dest="command")
+
+    # Command: epochToDatetime
+    parser_epoch = subparsers.add_parser("epochToDatetime", help="Convert epoch time to datetime.")
+    parser_epoch.add_argument("epoch", help="Epoch time to convert.")
+    parser_epoch.add_argument("--timezone", help="Timezone (optional).", required=False)
+
+    # Command: jsonToYaml
+    parser_jwt_decode = subparsers.add_parser("jwtDecode", help="Decode the given jwt")
+    parser_jwt_decode.add_argument("jwt", help="jwt to decode")
     args = parser.parse_args()
 
     if args.command == "epochToDatetime":
-        print(epoch_to_datetime(args.epoch))
+        result = epoch_to_datetime(args.epoch, args.timezone)
+        print(result)
+    elif args.command == "jwtDecode":
+        result = decode_jwt(args.jwt)
+        print(result)
     else:
-        print(f"Unknown command: {args.command}")
+        parser.print_help()
 
 
 if __name__ == "__main__":
