@@ -8,10 +8,15 @@ def csv_formatter(file_path, grid):
     formatter = TerminalFormatter()
     formatter.print_title()
     with open(file_path, newline="") as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            data.append(row)
         if grid:
-            formatter.format_table(data)
+            csv_reader = csv.reader(csvfile)
+            headers = next(csv_reader)  # Extract headers
+            data = [row for row in csv_reader]
+            # Format data as a table
+            formatter.format_table(data, headers)
         else:
+            reader = csv.DictReader(csvfile)
+            # Read the CSV for grid view
+            for row in reader:
+                data.append(row)
             print(json.dumps(data, indent=4))

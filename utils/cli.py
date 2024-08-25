@@ -68,8 +68,6 @@ def main():
         formatter.print_title()
         formatter.format_json_string(args.string, args.grid)
     elif args.command == "csvFormat":
-        formatter = TerminalFormatter()
-        formatter.print_title()
         csv_formatter(args.csv, args.grid)
     else:
         parser.print_help()
