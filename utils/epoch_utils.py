@@ -39,14 +39,14 @@ def curr_time(timezone):
         print(f"Error: {e}")
 
 
-def date_time_to_epoch(datetime, timezone):
+def date_time_to_epoch(datetime_str, timezone):
     try:
         if not timezone:
             timezone = "GMT"
         # Set the desired timezone
         target_timezone = pytz.timezone(timezone)
         # Convert the datetime string to a datetime object
-        dt = datetime.strptime(datetime, '%Y-%m-%d %H:%M:%S')
+        dt = datetime.strptime(datetime_str, '%Y-%m-%d %H:%M:%S')
         # Localize the datetime object to the desired timezone
         localized_datetime = target_timezone.localize(dt)
         # Convert the localized datetime to epoch
@@ -54,6 +54,6 @@ def date_time_to_epoch(datetime, timezone):
         time = localized_datetime.strftime('%Y-%m-%d %H:%M:%S %Z')
         formatter = TerminalFormatter()
         formatter.print_title()
-        formatter.format_table([['Datetime', datetime], ['Timezone', timezone], ['Epoch', epoch], ['Time', time]])
+        formatter.format_table([['Datetime', datetime_str], ['Timezone', timezone], ['Epoch', epoch], ['Time', time]])
     except (ValueError, pytz.UnknownTimeZoneError) as e:
         print(f"Error: {e}")
