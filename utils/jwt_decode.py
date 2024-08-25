@@ -41,4 +41,4 @@ def decode_jwt(token, key=None, algorithm=None):
         formatter.format_text("\nSignature:")
         formatter.format_table([["Signature", signature]])
     except jwt.DecodeError as e:
-        return f"Failed to decode JWT: {e}"
+        print(f"Failed to decode JWT: {e}")
