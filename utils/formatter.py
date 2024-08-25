@@ -28,9 +28,14 @@ class TerminalFormatter:
             table = []
             for key, value in data.items():
                 table.append([key, value])
+            print(table)
             self.format_table(table)
         else:
             print(json.dumps(data, indent=4))
+
+    def format_json_string(self, data, grid=True):
+        # Format JSON string as pretty-printed JSON
+        self.format_json(json.loads(data), grid=grid)
 
     def format_text(self, text):
         # Print plain text

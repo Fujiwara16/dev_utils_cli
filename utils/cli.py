@@ -41,7 +41,7 @@ def main():
     # Command jsonFormat
     parser_json = subparsers.add_parser("jsonFormat", help="Format the given JSON string.")
     parser_json.add_argument("string", help="JSON string to format.")
-    parser_json.add_argument("--grid", help="Enable grid view.", action="store_true")
+    parser_json.add_argument("--grid", help="Enable grid view.", required=False)
 
     args = parser.parse_args()
 
@@ -59,7 +59,7 @@ def main():
         decode_base64(args.string)
     elif args.command == "jsonFormat":
         formatter = TerminalFormatter()
-        formatter.format_json(args.string, args.grid)
+        formatter.format_json_string(args.string, args.grid)
     else:
         parser.print_help()
 
