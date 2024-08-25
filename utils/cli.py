@@ -1,5 +1,6 @@
 import argparse
 
+from utils.base64_util import encode_base64, decode_base64
 from utils.epoch_utils import curr_time, date_time_to_epoch, epoch_to_datetime
 from utils.jwt_decode import decode_jwt
 
@@ -13,7 +14,7 @@ def main():
     parser_epoch.add_argument("epoch", help="Epoch time to convert.")
     parser_epoch.add_argument("--timezone", help="Timezone (optional).", required=False)
 
-    # Command: jsonToYaml
+    # Command: jwtDecode
     parser_jwt_decode = subparsers.add_parser("jwtDecode", help="Decode the given jwt")
     parser_jwt_decode.add_argument("jwt", help="jwt to decode")
     parser_jwt_decode.add_argument("--key", help="Key to verify the jwt", required=False)
@@ -28,7 +29,13 @@ def main():
     parser_date.add_argument("datetime", help="Datetime to convert in format (YYYY-MM-DD HH:MM:SS).")
     parser_date.add_argument("--timezone", help="Timezone (optional).", required=False)
 
+    # Command base64Encode
+    parser_base64_ec = subparsers.add_parser("base64Encode", help="Encode the given string to base64.")
+    string_to_encode = parser_base64_ec.add_argument("string", help="String to encode.")
 
+    # Command base64Decode
+    parser_base64_dc = subparsers.add_parser("base64Decode", help="Decode the given base64 string.")
+    string_to_decode = parser_base64_dc.add_argument("string", help="String to decode.")
 
     args = parser.parse_args()
 
@@ -40,6 +47,10 @@ def main():
         curr_time(args.timezone)
     elif args.command == "dateToEpoch":
         date_time_to_epoch(args.datetime, args.timezone)
+    elif args.command == "base64Encode":
+        encode_base64(args.string)
+    elif args.command == "base64Decode":
+        decode_base64(args.string)
     else:
         parser.print_help()
 
