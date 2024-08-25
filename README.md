@@ -16,16 +16,16 @@ You can install the package directly from the GitHub repository using `pip`:
 pip install git+https://github.com/Fujiwara16/dev_utils_cli.git
 ```
 
-This command will install the package and make the `dev_utils_cli` commands available globally.
+This command will install the package and make the `dev_util` commands available globally.
 
 ## Usage
 
 ### General Command Structure
 
-After installation, you can use the CLI tool via the `dev_utils_cli` command:
+After installation, you can use the CLI tool via the `dev_util` command:
 
 ```bash
-dev_utils_cli [command] [arguments]
+dev_util [command] [arguments]
 ```
 
 ### Command: `epochToDatetime`
@@ -35,13 +35,13 @@ Convert epoch time to a human-readable datetime.
 **Usage:**
 
 ```bash
-dev_utils_cli epochToDatetime [epoch] [--timezone <timezone>]
+dev_util epochToDatetime [epoch] [--timezone <timezone>]
 ```
 
 **Example:**
 
 ```bash
-dev_utils_cli epochToDatetime 1609459200 --timezone "UTC"
+dev_util epochToDatetime 1609459200 --timezone "UTC"
 ```
 
 This will output:
@@ -57,13 +57,13 @@ Decode a JWT and optionally verify it using a key and algorithm.
 **Usage:**
 
 ```bash
-dev_utils_cli jwtDecode [jwt] [--key <key>] [--algorithm <algorithm>]
+dev_util jwtDecode [jwt] [--key <key>] [--algorithm <algorithm>]
 ```
 
 **Example:**
 
 ```bash
-dev_utils_cli jwtDecode eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... --key "your_256_bit_key" --algorithm HS256
+dev_util jwtDecode eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... --key "your_256_bit_key" --algorithm HS256
 ```
 
 This will decode the JWT and print out the header, payload, and signature.
@@ -73,7 +73,7 @@ This will decode the JWT and print out the header, payload, and signature.
 ### Epoch to Datetime
 
 ```bash
-dev_utils_cli epochToDatetime 1609459200
+dev_util epochToDatetime 1609459200
 ```
 
 Output:
@@ -85,7 +85,7 @@ Output:
 ### JWT Decode
 
 ```bash
-dev_utils_cli jwtDecode eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+dev_util jwtDecode eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
 Output:
