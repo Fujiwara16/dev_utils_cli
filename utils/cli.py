@@ -59,6 +59,7 @@ def main():
         decode_base64(args.string)
     elif args.command == "jsonFormat":
         formatter = TerminalFormatter()
+        formatter.print_title()
         formatter.format_json_string(args.string, args.grid)
     else:
         parser.print_help()

@@ -117,6 +117,23 @@ dev_utils_cli jwtDecode eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... --key "your_256_
 
 This will decode the JWT and print out the header, payload, and signature.
 
+### Command: `jsonFormat`
+
+Format a JSON string, with an optional grid view.
+
+**Usage:**
+
+```bash
+dev_utils_cli jsonFormat [string] [--grid <True/False>]
+```
+
+**Example:**
+
+```bash
+dev_utils_cli jsonFormat '{"uid": "RK20170707200","registration_status":1}' --grid True
+```
+
+This will output the formatted JSON string, either in grid format or as pretty-printed JSON depending on the `--grid` flag.
 
 ## Contributing
 
