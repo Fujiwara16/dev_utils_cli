@@ -29,7 +29,7 @@ def main():
         epoch_to_datetime(args.epoch, args.timezone)
     elif args.command == "jwtDecode":
         decode_jwt(args.jwt, args.key, args.algorithm)
-    elif args.command == "currentEpoch":
+    elif args.command == "currentTime":
         curr_time(args.timezone)
     else:
         parser.print_help()
