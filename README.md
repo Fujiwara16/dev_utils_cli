@@ -7,6 +7,8 @@
 
 - **Epoch to Datetime Conversion**: Convert epoch time to a human-readable datetime, with optional timezone support.
 - **JWT Decode**: Decode and optionally verify a JWT using a provided key and algorithm.
+- **Current Time**: Get the current time in both epoch and human-readable datetime format, with optional timezone support.
+- **Datetime to Epoch Conversion**: Convert a datetime string to epoch time, with optional timezone support.
 
 ## Installation
 
@@ -20,12 +22,14 @@ This command will install the package and make the `dev_util` commands available
 
 ## Usage
 
+## Usage
+
 ### General Command Structure
 
-After installation, you can use the CLI tool via the `dev_util` command:
+After installation, you can use the CLI tool via the `dev_utils_cli` command:
 
 ```bash
-dev_util [command] [arguments]
+dev_utils_cli [command] [arguments]
 ```
 
 ### Command: `epochToDatetime`
@@ -35,19 +39,64 @@ Convert epoch time to a human-readable datetime.
 **Usage:**
 
 ```bash
-dev_util epochToDatetime [epoch] [--timezone <timezone>]
+dev_utils_cli epochToDatetime [epoch] [--timezone <timezone>]
 ```
 
 **Example:**
 
 ```bash
-dev_util epochToDatetime 1609459200 --timezone "UTC"
+dev_utils_cli epochToDatetime 1609459200 --timezone "UTC"
 ```
 
 This will output:
 
 ```
 2021-01-01 00:00:00
+```
+
+### Command: `currentTime`
+
+Get the current time in both epoch and human-readable datetime format.
+
+**Usage:**
+
+```bash
+dev_utils_cli currentTime [--timezone <timezone>]
+```
+
+**Example:**
+
+```bash
+dev_utils_cli currentTime --timezone "Asia/Kolkata"
+```
+
+This will output something like:
+
+```
+Current Epoch: 1627489200
+Current Datetime: 2024-08-25 10:00:00
+```
+
+### Command: `dateToEpoch`
+
+Convert a datetime string to epoch time.
+
+**Usage:**
+
+```bash
+dev_utils_cli dateToEpoch [datetime] [--timezone <timezone>]
+```
+
+**Example:**
+
+```bash
+dev_utils_cli dateToEpoch "2024-08-25 10:00:00" --timezone "Asia/Kolkata"
+```
+
+This will output:
+
+```
+Epoch: 1627489200
 ```
 
 ### Command: `jwtDecode`
@@ -57,61 +106,17 @@ Decode a JWT and optionally verify it using a key and algorithm.
 **Usage:**
 
 ```bash
-dev_util jwtDecode [jwt] [--key <key>] [--algorithm <algorithm>]
+dev_utils_cli jwtDecode [jwt] [--key <key>] [--algorithm <algorithm>]
 ```
 
 **Example:**
 
 ```bash
-dev_util jwtDecode eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... --key "your_256_bit_key" --algorithm HS256
+dev_utils_cli jwtDecode eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... --key "your_256_bit_key" --algorithm HS256
 ```
 
 This will decode the JWT and print out the header, payload, and signature.
 
-## Example Outputs
-
-### Epoch to Datetime
-
-```bash
-dev_util epochToDatetime 1609459200
-```
-
-Output:
-
-```
-2021-01-01 00:00:00
-```
-
-### JWT Decode
-
-```bash
-dev_util jwtDecode eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-```
-
-Output:
-
-```
-Header:
-+--------+------------+
-| Field  | Value      |
-+--------+------------+
-| alg    | HS256      |
-| typ    | JWT        |
-+--------+------------+
-
-Payload:
-+--------+------------+
-| Claim  | Value      |
-+--------+------------+
-| sub    | 1234567890 |
-| name   | John Doe   |
-+--------+------------+
-
-Signature:
-+----------+--------------------------------------------------+
-| Signature| SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c     |
-+----------+--------------------------------------------------+
-```
 
 ## Contributing
 

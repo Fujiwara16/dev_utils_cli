@@ -27,6 +27,9 @@ def main():
     parser_date = subparsers.add_parser("dateToEpoch", help="Convert datetime to epoch. Pass the datetime and timezone (optional).")
     parser_date.add_argument("datetime", help="Datetime to convert in format (YYYY-MM-DD HH:MM:SS).")
     parser_date.add_argument("--timezone", help="Timezone (optional).", required=False)
+
+
+
     args = parser.parse_args()
 
     if args.command == "epochToDatetime":
