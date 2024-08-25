@@ -130,10 +130,30 @@ dev_utils_cli jsonFormat [string] [--grid <True/False>]
 **Example:**
 
 ```bash
-dev_utils_cli jsonFormat '{"uid": "RK20170707200","registration_status":1}' --grid True
+dev_utils_cli jsonFormat '{"xyz": "abc","status":1}' --grid True
 ```
 
 This will output the formatted JSON string, either in grid format or as pretty-printed JSON depending on the `--grid` flag.
+
+
+### Command: `csvFormat`
+
+Format a CSV file and display its contents in json format, with an optional grid view.
+
+**Usage:**
+
+```bash
+dev_utils_cli csvFormat [csv_file_path] [--grid <True/False>]
+```
+
+**Example:**
+
+```bash
+dev_utils_cli csvFormat example.csv --grid True
+```
+
+This will format the CSV content. If the `--grid` flag is set to `True`, the table will be displayed in grid format; otherwise, it will be displayed in a json format.
+
 
 ## Contributing
 
