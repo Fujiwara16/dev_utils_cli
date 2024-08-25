@@ -21,11 +21,9 @@ def main():
     args = parser.parse_args()
 
     if args.command == "epochToDatetime":
-        result = epoch_to_datetime(args.epoch, args.timezone)
-        print(result)
+        epoch_to_datetime(args.epoch, args.timezone)
     elif args.command == "jwtDecode":
-        result = decode_jwt(args.jwt, args.key, args.algorithm)
-        print(result)
+        decode_jwt(args.jwt, args.key, args.algorithm)
     else:
         parser.print_help()
 
