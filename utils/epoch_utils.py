@@ -12,6 +12,6 @@ def epoch_to_datetime(epoch, timezone):
         target_timezone = pytz.timezone(timezone)
         # Localize the datetime object to the desired timezone
         localized_datetime = dt.astimezone(target_timezone)
-        return localized_datetime.strftime('%Y-%m-%d %H:%M:%S') + timezone
+        return localized_datetime.strftime('%Y-%m-%d %H:%M:%S %Z')
     except (ValueError, pytz.UnknownTimeZoneError) as e:
         return f"Error: {e}"
