@@ -1,6 +1,7 @@
 import argparse
 
 from utils.base64_util import encode_base64, decode_base64
+from utils.csv_util import csv_formatter
 from utils.epoch_utils import curr_time, date_time_to_epoch, epoch_to_datetime
 from utils.formatter import TerminalFormatter
 from utils.jwt_decode import decode_jwt
@@ -43,6 +44,11 @@ def main():
     parser_json.add_argument("string", help="JSON string to format.")
     parser_json.add_argument("--grid", help="Enable grid view.", required=False)
 
+    # Command csvToJson
+    parser_csv = subparsers.add_parser("csvFormat", help="Convert CSV to JSON/GRID.")
+    parser_csv.add_argument("csv", help="CSV file path to convert.")
+    parser_csv.add_argument("--grid", help="Enable grid view.", required=False)
+
     args = parser.parse_args()
 
     if args.command == "epochToDatetime":
@@ -61,6 +67,10 @@ def main():
         formatter = TerminalFormatter()
         formatter.print_title()
         formatter.format_json_string(args.string, args.grid)
+    elif args.command == "csvToJson":
+        formatter = TerminalFormatter()
+        formatter.print_title()
+        csv_formatter(args.csv, args.grid)
     else:
         parser.print_help()
 

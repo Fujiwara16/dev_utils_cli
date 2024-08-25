@@ -28,7 +28,6 @@ class TerminalFormatter:
             table = []
             for key, value in data.items():
                 table.append([key, value])
-            print(table)
             self.format_table(table)
         else:
             print(json.dumps(data, indent=4))
