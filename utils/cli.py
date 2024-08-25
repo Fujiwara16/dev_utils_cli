@@ -2,6 +2,7 @@ import argparse
 
 from utils.base64_util import encode_base64, decode_base64
 from utils.epoch_utils import curr_time, date_time_to_epoch, epoch_to_datetime
+from utils.formatter import TerminalFormatter
 from utils.jwt_decode import decode_jwt
 
 
@@ -31,11 +32,16 @@ def main():
 
     # Command base64Encode
     parser_base64_ec = subparsers.add_parser("base64Encode", help="Encode the given string to base64.")
-    string_to_encode = parser_base64_ec.add_argument("string", help="String to encode.")
+    parser_base64_ec.add_argument("string", help="String to encode.")
 
     # Command base64Decode
     parser_base64_dc = subparsers.add_parser("base64Decode", help="Decode the given base64 string.")
-    string_to_decode = parser_base64_dc.add_argument("string", help="String to decode.")
+    parser_base64_dc.add_argument("string", help="String to decode.")
+
+    # Command jsonFormat
+    parser_json = subparsers.add_parser("jsonFormat", help="Format the given JSON string.")
+    parser_json.add_argument("string", help="JSON string to format.")
+    parser_json.add_argument("--grid", help="Enable grid view.", action="store_true")
 
     args = parser.parse_args()
 
@@ -51,6 +57,9 @@ def main():
         encode_base64(args.string)
     elif args.command == "base64Decode":
         decode_base64(args.string)
+    elif args.command == "jsonFormat":
+        formatter = TerminalFormatter()
+        formatter.format_json(args.string, args.grid)
     else:
         parser.print_help()
 

@@ -10,7 +10,7 @@ def encode_base64(string: str):
         formatter.print_title()
         formatter.format_table([["Encoded string", str]])
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error: {e}, check the input string.")
 
 
 def decode_base64(string: str):
@@ -20,4 +20,4 @@ def decode_base64(string: str):
         formatter.print_title()
         formatter.format_table([["Decoded string", str]])
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error: {e}, check the input string.")
