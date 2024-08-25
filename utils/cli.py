@@ -16,13 +16,15 @@ def main():
     # Command: jsonToYaml
     parser_jwt_decode = subparsers.add_parser("jwtDecode", help="Decode the given jwt")
     parser_jwt_decode.add_argument("jwt", help="jwt to decode")
+    parser_jwt_decode.add_argument("--key", help="Key to verify the jwt", required=False)
+    parser_jwt_decode.add_argument("--algorithm", help="Algorithm to verify the jwt", required=False)
     args = parser.parse_args()
 
     if args.command == "epochToDatetime":
         result = epoch_to_datetime(args.epoch, args.timezone)
         print(result)
     elif args.command == "jwtDecode":
-        result = decode_jwt(args.jwt)
+        result = decode_jwt(args.jwt, args.key, args.algorithm)
         print(result)
     else:
         parser.print_help()
