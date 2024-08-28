@@ -3,6 +3,8 @@
 
 `Dev Utils CLI` is a Python package that provides a set of common utilities for developers, including converting epoch time to datetime and decoding JWT tokens. This CLI tool is designed to be flexible and easy to use, making it a handy addition to your developer toolkit.
 
+## Requires Python >= 3.9
+
 ## Features
 
 - **Epoch to Datetime Conversion**: Convert epoch time to a human-readable datetime, with optional timezone support.
@@ -20,7 +22,6 @@ pip install git+https://github.com/Fujiwara16/dev_utils_cli.git
 
 This command will install the package and make the `dev_util` commands available globally.
 
-## Usage
 
 ## Usage
 
